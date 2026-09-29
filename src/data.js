@@ -81,7 +81,7 @@ export const experience = [
     ],
   },
   {
-    from: 'Feb 2023',
+    from: 'Jan 2023',
     to: 'Jun 2023',
     role: 'Frontend Developer Intern',
     company: 'Data Axle Solutions',
