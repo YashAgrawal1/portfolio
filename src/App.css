@@ -396,22 +396,3 @@
 .edu-school {
   font-size: 0.90625rem;
 }
-
-/* ----------------------------------------------------------------- footer */
-
-.footer {
-  max-width: 34rem;
-  margin-top: 5.5rem;
-  font-size: 0.84375rem;
-  color: var(--slate-500);
-}
-
-.footer a {
-  color: var(--slate-400);
-  font-weight: 500;
-  transition: color 150ms ease;
-}
-
-.footer a:hover {
-  color: var(--teal);
-}

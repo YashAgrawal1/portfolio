@@ -44,9 +44,3 @@ version, so there is nothing to configure in the Netlify UI.
 4. **Site configuration → Change site name** to set the subdomain.
 
 Every push to the default branch redeploys; pull requests get deploy previews.
-
-## Layout credit
-
-The two-column layout — fixed left rail, scrolling right column, hover-dimmed
-experience list — follows [Brittany Chiang's portfolio](https://brittanychiang.com),
-credited in the site footer.

@@ -3,7 +3,6 @@ import './App.css';
 import About from './components/About';
 import Education from './components/Education';
 import Experience from './components/Experience';
-import Footer from './components/Footer';
 import Sidebar from './components/Sidebar';
 import Skills from './components/Skills';
 import Spotlight from './components/Spotlight';
@@ -23,7 +22,6 @@ export default function App() {
           <Experience />
           <Skills />
           <Education />
-          <Footer />
         </main>
       </div>
     </>
