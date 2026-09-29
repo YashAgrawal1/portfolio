@@ -91,6 +91,30 @@ export const experience = [
     ],
     tags: ['React.js', 'Ruby on Rails', 'REST APIs', 'PostgreSQL'],
   },
+  {
+    from: 'Jun 2022',
+    to: 'Jul 2022',
+    role: 'Web Development Intern (Node.js)',
+    company: 'Celebal Technologies',
+    url: '',
+    body: [
+      'Developed web applications using {Node.js} in a remote, professional team environment.',
+      "Contributed to production-level projects as part of Celebal's summer internship program (CSI 2022).",
+    ],
+    tags: ['Node.js', 'Web Development', 'Remote'],
+  },
+  {
+    from: 'Jun 2021',
+    to: 'Aug 2021',
+    role: 'Fullstack Android Developer Intern',
+    company: 'CodeKul Private Limited',
+    url: '',
+    body: [
+      'Built and shipped {Android applications} as part of the core app development team.',
+      'Gained hands-on experience across the full stack, from UI design through to backend integration.',
+    ],
+    tags: ['Android', 'App Development', 'Full Stack'],
+  },
 ];
 
 export const skills = [

@@ -47,7 +47,9 @@ export default function Experience() {
                 <p key={paragraph.slice(0, 40)}>{withHighlights(paragraph)}</p>
               ))}
 
-              <Tags items={job.tags} label={`Technologies used at ${job.company}`} />
+              {job.tags.length > 0 && (
+                <Tags items={job.tags} label={`Technologies used at ${job.company}`} />
+              )}
             </div>
           </li>
         ))}
