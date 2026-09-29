@@ -1,0 +1,417 @@
+/**
+ * Layout and components.
+ *
+ * The page is two columns above 1024px: a left column that stays put for the
+ * whole scroll, and a right column that carries every section. Below that
+ * breakpoint the two stack and the left column's nav is dropped.
+ */
+
+.spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  transition: background 200ms ease;
+}
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+@media (min-width: 1024px) {
+  .shell {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+/* ---------------------------------------------------------------- sidebar */
+
+.sidebar {
+  padding: 4rem 0 0;
+}
+
+@media (min-width: 1024px) {
+  .sidebar {
+    position: sticky;
+    top: 0;
+    flex: none;
+    width: 48%;
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 6rem 0;
+  }
+}
+
+.name {
+  font-size: clamp(2.125rem, 1.6rem + 2.2vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: var(--slate-200);
+}
+
+.role {
+  margin-top: 0.75rem;
+  font-size: 1.1875rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--slate-200);
+}
+
+.tagline {
+  margin-top: 1rem;
+  max-width: 21rem;
+}
+
+.nav {
+  display: none;
+  margin-top: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    display: block;
+  }
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0;
+}
+
+.nav-indicator {
+  display: block;
+  width: 2rem;
+  height: 1px;
+  margin-right: 1rem;
+  background-color: var(--slate-600);
+  transition:
+    width 150ms ease,
+    background-color 150ms ease;
+}
+
+.nav-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--slate-500);
+  transition: color 150ms ease;
+}
+
+.nav-link:hover .nav-indicator,
+.nav-link:focus-visible .nav-indicator,
+.nav-link.is-active .nav-indicator {
+  width: 4rem;
+  background-color: var(--slate-200);
+}
+
+.nav-link:hover .nav-label,
+.nav-link:focus-visible .nav-label,
+.nav-link.is-active .nav-label {
+  color: var(--slate-200);
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .socials {
+    margin-top: 0;
+  }
+}
+
+.socials a {
+  display: block;
+  color: var(--slate-500);
+  transition: color 150ms ease;
+}
+
+.socials a:hover {
+  color: var(--slate-200);
+}
+
+.socials svg {
+  display: block;
+  width: 1.375rem;
+  height: 1.375rem;
+}
+
+/* ------------------------------------------------------------------- main */
+
+.main {
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 1024px) {
+  .main {
+    width: 52%;
+    padding: 6rem 0;
+  }
+}
+
+.section {
+  margin-bottom: 6rem;
+  scroll-margin-top: 6rem;
+}
+
+.section:last-of-type {
+  margin-bottom: 0;
+}
+
+/* On narrow screens the heading is a sticky blurred bar; on wide ones the
+   left-hand nav says where we are, so it is hidden. */
+.section-head {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  margin: 0 calc(var(--gutter) * -1) 1rem;
+  padding: 1.25rem var(--gutter);
+  background-color: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+}
+
+.section-head h2 {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate-200);
+}
+
+@media (min-width: 1024px) {
+  .section-head {
+    position: static;
+    margin: 0;
+    padding: 0;
+    background: none;
+    backdrop-filter: none;
+  }
+
+  .section-head h2 {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+.prose p + p {
+  margin-top: 1rem;
+}
+
+.hl,
+.card-company {
+  color: var(--slate-200);
+  font-weight: 500;
+}
+
+.inline-link {
+  color: var(--slate-200);
+  font-weight: 500;
+  transition: color 150ms ease;
+}
+
+.inline-link:hover {
+  color: var(--teal);
+}
+
+/* ------------------------------------------------------------------ cards */
+
+/* Hovering one entry fades its neighbours; the entry under the cursor takes
+   its own opacity back. */
+@media (min-width: 1024px) {
+  .cards:hover .card,
+  .cards:focus-within .card {
+    opacity: 0.45;
+  }
+
+  .cards .card:hover,
+  .cards .card:focus-within {
+    opacity: 1;
+  }
+}
+
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-bottom: 2.25rem;
+  transition: opacity 200ms ease;
+}
+
+@media (min-width: 640px) {
+  .card {
+    grid-template-columns: 8.25rem 1fr;
+    gap: 2rem;
+  }
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: -1rem -1.5rem;
+  z-index: -1;
+  border-radius: 0.5rem;
+  transition:
+    background-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+@media (min-width: 1024px) {
+  .card:hover::before,
+  .card:focus-within::before {
+    background-color: var(--navy-raised);
+    box-shadow:
+      inset 0 1px 0 0 rgba(148, 163, 184, 0.1),
+      0 10px 30px -15px rgba(2, 12, 27, 0.7);
+  }
+}
+
+.card-when {
+  padding-top: 0.1875rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--slate-500);
+  white-space: nowrap;
+}
+
+.card-title {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.card-role {
+  color: var(--slate-200);
+  transition: color 150ms ease;
+}
+
+.card:hover .card-role,
+.card:focus-within .card-role {
+  color: var(--teal);
+}
+
+.card-body p + p {
+  margin-top: 0.75rem;
+}
+
+.card-body p {
+  font-size: 0.90625rem;
+}
+
+.arrow {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.125rem;
+  vertical-align: text-bottom;
+  transition: transform 150ms ease;
+}
+
+.card:hover .arrow,
+.card:focus-within .arrow,
+.resume-link:hover .arrow,
+.resume-link:focus-visible .arrow {
+  transform: translate(2px, -2px);
+}
+
+/* ------------------------------------------------------------------- tags */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.tags span {
+  display: block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background-color: var(--teal-dim);
+  color: var(--teal);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.resume-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--slate-200);
+  transition: color 150ms ease;
+}
+
+.resume-link:hover {
+  color: var(--teal);
+}
+
+/* --------------------------------------------------- skills and education */
+
+.skill-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1.375rem;
+}
+
+@media (min-width: 640px) {
+  .skill-row {
+    grid-template-columns: 8.25rem 1fr;
+    gap: 2rem;
+  }
+}
+
+.skill-row .tags {
+  margin-top: 0;
+}
+
+.skill-rows .skill-row:last-child {
+  margin-bottom: 0;
+}
+
+.edu-school {
+  font-size: 0.90625rem;
+}
+
+/* ----------------------------------------------------------------- footer */
+
+.footer {
+  max-width: 34rem;
+  margin-top: 5.5rem;
+  font-size: 0.84375rem;
+  color: var(--slate-500);
+}
+
+.footer a {
+  color: var(--slate-400);
+  font-weight: 500;
+  transition: color 150ms ease;
+}
+
+.footer a:hover {
+  color: var(--teal);
+}
