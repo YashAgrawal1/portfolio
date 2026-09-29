@@ -130,5 +130,5 @@ export const education = {
   to: '2023',
   degree: 'B.Tech, Computer Science',
   school: 'MIT Academy of Engineering, Alandi, Pune',
-  detail: 'CGPA 8.76 / 10',
+  detail: 'CGPA 8.76',
 };
